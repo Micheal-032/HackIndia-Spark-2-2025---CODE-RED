@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Hashes | TruLink AI</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="logo">TruLink AI 🔥</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="seller_management.html">Seller Management</a></li>
+            <li><a href="product_verification.html">Product Verification</a></li>
+            <li><a href="blockchain_hashes.html" class="active">Blockchain Hashes</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="blockchain-hashes">
+    <div class="container">
+        <h1>Blockchain Hashes</h1>
+        <p>View all cryptographically secured product verification hashes.</p>
+        <table class="hash-table">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Hash Code</th>
+                    <th>Verification Status</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1001</td>
+                    <td>Mobile Phone</td>
+                    <td>3F2B9A6D...ABC123</td>
+                    <td class="verified">Verified ✅</td>
+                    <td>2025-03-03 10:25 AM</td>
+                </tr>
+                <tr>
+                    <td>1002</td>
+                    <td>Laptop</td>
+                    <td>9A8B7C6D...XYZ789</td>
+                    <td class="fraud">Fraud Detected ❌</td>
+                    <td>2025-03-03 10:40 AM</td>
+                </tr>
+                <tr>
+                    <td>1003</td>
+                    <td>Headphones</td>
+                    <td>5C3B2A1F...LMN456</td>
+                    <td class="verified">Verified ✅</td>
+                    <td>2025-03-03 11:00 AM</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="btn-group">
+            <button class="btn download">Download Hash Report</button>
+            <button class="btn view">View Blockchain Data</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <h3>TruLink AI 🔥</h3>
+        <p>Fraud Proof Supply Chain Verification System</p>
+    </div>
+    <div class="footer-bottom">&copy; 2025 TruLink AI | Developed by Bala 🚀</div>
+</footer>
+
+<style>
+.blockchain-hashes {
+    text-align: center;
+    padding: 3rem 0;
+    background: #121212;
+    color: #fff;
+}
+
+.hash-table {
+    width: 90%;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.hash-table th, .hash-table td {
+    padding: 1rem;
+    border: 1px solid rgba(0, 255, 255, 0.5);
+    text-align: center;
+}
+
+.verified {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+.fraud {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.btn-group {
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 12px 25px;
+    background: linear-gradient(90deg, #00f0ff, #008cff);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(90deg, #008cff, #00f0ff);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</body>
+</html>

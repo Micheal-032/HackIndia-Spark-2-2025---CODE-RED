@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Management - TruLink AI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+<div class="dashboard">
+    <aside class="sidebar">
+        <div class="logo">
+            TruLink AI 🔥
+        </div>
+        <ul class="menu">
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="sellermanagement.html">Seller Management</a></li>
+            <li><a href="productverification.html">Product Verification</a></li>
+            <li><a href="blockchain_hases.html">Blockchain Hashes</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <h1>Seller Management</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Seller by UID">
+                <button><i class="fa fa-search"></i></button>
+                <button class="add-btn">+ Add Seller</button>
+            </div>
+        </header>
+
+        <section class="seller-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Seller UID</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TRU001</td>
+                        <td>Amazon</td>
+                        <td>amazon@gmail.com</td>
+                        <td><span class="active">Active</span></td>
+                        <td>
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                            <a href="information.html" class="delete1">Details</a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: white;
+    display: flex;
+}
+
+.dashboard {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background: #1b1b1b;
+    padding: 20px;
+    box-shadow: 0 0 20px cyan;
+}
+
+.logo {
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: cyan;
+    font-weight: bold;
+}
+
+.menu li {
+    list-style: none;
+    padding: 15px;
+    margin: 10px 0;
+    transition: 0.3s;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.menu li:hover {
+    background: rgba(0, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    background: #1b1b1b;
+    padding: 20px;
+    box-shadow: 0 0 15px cyan;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 10px;
+    width: 300px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    box-shadow: 0 0 10px cyan;
+}
+
+.add-btn {
+    padding: 10px 20px;
+    border: none;
+    background: cyan;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+.add-btn:hover {
+    transform: scale(1.1);
+    background: #008cff;
+}
+
+.seller-table table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px cyan;
+    margin-top: 20px;
+}
+
+.seller-table th, .seller-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid cyan;
+}
+
+.seller-table th {
+    background: rgba(0, 255, 255, 0.2);
+}
+
+.active {
+    color: lime;
+    font-weight: bold;
+}
+
+.edit {
+    padding: 8px 15px;
+    background: cyan;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 10px;
+}
+.delete1 {
+  display: inline-block;
+  padding: 10px 20px;
+  background: blue; /* Your button color */
+  color: white;
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Button Curve */
+  text-align: center;
+}
+
+.delete {
+    padding: 8px 15px;
+    background: red;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.edit:hover, .delete:hover {
+    transform: scale(1.1);
+}
+</style>
+<script>
+document.querySelector(".add-btn").onclick = function() {
+    alert("Add Seller Form Coming Soon!");
+}
+</script>
+</body>
+</html>

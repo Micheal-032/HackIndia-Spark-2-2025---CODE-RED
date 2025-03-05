@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruLink AI - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0d0d0d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 500px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ccff;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 204, 255, 0.8);
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h2 {
+            color: #00ccff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .btn-group button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            background: linear-gradient(135deg, #00ccff, #00ff99);
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.8);
+            transition: 0.4s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(0, 255, 153, 1);
+        }
+
+        .login-box {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .input-box {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            outline: none;
+            background: transparent;
+            border-bottom: 2px solid #00ccff;
+            color: #fff;
+            transition: 0.3s ease;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .login-btn {
+            padding: 12px;
+            width: 100%;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #00ccff, #00ff99);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.8);
+            transition: 0.4s ease;
+        }
+
+        .login-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(0, 255, 153, 1);
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
+            }
+            to {
+                text-shadow: 0 0 20px #00ff99, 0 0 30px #00ff99;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>TruLink AI Login</h2>
+    <div class="btn-group">
+        <button onclick="showLogin('seller')">Seller</button>
+        <button onclick="showLogin('consumer')">Consumer</button>
+    </div>
+    <div class="login-box" id="seller-login">
+        <h3>Seller Login</h3>
+        <div class="input-box">
+            <input type="text" id="seller-id" placeholder="User ID">
+        </div>
+        <div class="input-box">
+            <input type="password" id="seller-password" placeholder="Password">
+        </div>
+        <button class="login-btn" onclick="loginSeller()">Login</button>
+    </div>
+
+    <div class="login-box" id="consumer-login">
+        <h3>Consumer Login</h3>
+        <div class="input-box">
+            <input type="text" id="consumer-id" placeholder="User ID">
+        </div>
+        <div class="input-box">
+            <input type="password" id="consumer-password" placeholder="Password">
+        </div>
+        <button class="login-btn" onclick="loginConsumer()">Login</button>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+<script>
+    // Sample data for seller and consumer
+    let sellerData = [
+        { id: "12345678", password: "sellerpass" }, // Example seller data
+    ];
+
+    let consumerData = [
+        { id: "consumer1", password: "consumerpass" }, // Example consumer data
+    ];
+
+    function showLogin(userType) {
+        document.querySelectorAll('.login-box').forEach(box => box.style.display = 'none');
+        if (userType === 'seller') {
+            document.getElementById("seller-login").style.display = "block";
+        } else if (userType === 'consumer') {
+            document.getElementById("consumer-login").style.display = "block";
+        }
+    }
+
+    function loginSeller() {
+        const id = document.getElementById("seller-id").value.trim();
+
+        if (id.length === 8) {  // Check if ID is exactly 8 digits for seller
+            alert("Successful Login!");
+            window.location.href = "/TruLink-AI/frontend/seller/Product/productlist.html"; // Redirect to product list
+        } else {
+            alert("Not Matched");
+        }
+    }
+
+    function loginConsumer() {
+        const id = document.getElementById("consumer-id").value.trim();
+        const password = document.getElementById("consumer-password").value.trim();
+
+        const consumer = consumerData.find(c => c.id === id && c.password === password);
+        if (consumer) {
+            alert("Login Successful!");
+            window.location.href = "consumer-dashboard.html";  // redirect to consumer dashboard
+        } else {
+            alert("Invalid Consumer Credentials!");
+        }
+    }
+</script>
+</body>
+</html>

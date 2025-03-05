@@ -1,0 +1,251 @@
+/* TruLink AI CSS Magic 🔥 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    animation: fadeDown 1s ease-in-out;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glow 2s infinite alternate;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 20px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    position: relative;
+    transition: 0.5s;
+}
+
+.nav-links a:hover {
+    color: #00d2ff;
+    text-shadow: 0 0 10px #00d2ff;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('assets/images/background.jpg') no-repeat center center/cover;
+    text-align: center;
+    animation: zoomFade 2s ease;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    letter-spacing: 5px;
+    animation: glow 2s infinite alternate;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+.btn {
+    padding: 10px 30px;
+    background: #00d2ff;
+    border: none;
+    border-radius: 50px;
+    color: #0f0329;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background: #3a7bd5;
+}
+
+.about, .features, .contact {
+    padding: 100px 5%;
+    text-align: center;
+    animation: fadeUp 2s ease-in-out;
+}
+
+.feature-boxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.feature-box {
+    padding: 40px;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 20px;
+    transition: transform 0.5s, background 0.5s;
+}
+
+.feature-box:hover {
+    transform: translateY(-20px);
+    background: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #00d2ff; }
+    to { text-shadow: 0 0 30px #00d2ff, 0 0 60px #3a7bd5; }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomFade {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #070468;
+    box-shadow: 0 -10px 20px rgba(0, 255, 255, 0.2);
+}
+.image-gallery {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70vh;
+    padding: 50px;
+    background: transparent;
+    gap: 2rem;
+  }
+  
+  .image img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+    transition: all 0.4s ease-in-out;
+  }
+  
+  .image.left img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px rgba(0, 140, 255, 1);
+  }
+  
+  
+  
+  .image.center img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 60px rgba(0, 255, 255, 1);
+  }
+  
+  .image.right img:hover {
+    transform: rotateY(15deg) scale(1.1);
+    box-shadow: 0 0 40px rgba(140, 0, 255, 1);
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  body {
+    background: #141e30;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding-top: 50px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+}
+
+.signup-card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    animation: slideIn 2s ease-out;
+}
+
+input, button {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.5s;
+}
+
+input:hover, button:hover {
+    transform: scale(1.1);
+}
+
+button {
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

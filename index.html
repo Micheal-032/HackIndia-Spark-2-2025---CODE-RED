@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruLink AI - Your Fraud Proof Supply Chain</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="logo">TruLink AI 🔥</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="frodfinder.html">Identy Finder</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button class="btn login" onclick="window.location.href='login.html'">Login</button>
+            <button class="btn signup" onclick="window.location.href='signup.html'">Sign Up</button>
+        </div>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to TruLink</h1>
+        
+
+        <button class="btn explore">Explore Now</button>
+        <section class="image-gallery">
+            <div class="image left">
+                <img src="./assets/aiimage.webp" alt="Product AI">
+            </div>
+            <div class="image center">
+                <img src="./assets/imgae2.webp" alt="TruLink AI Logo">
+            </div>
+            <div class="image right">
+                <img src="./assets/block.webp" alt="Blockchain Secure">
+            </div>
+        </section>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <h2>About TruLink AI</h2>
+    <p>TruLink AI uses Artificial Intelligence and Blockchain Technology to verify product authenticity and secure supply chain networks.</p>
+</section>
+
+<section id="features" class="features">
+    <h2>Our Features</h2>
+    <div class="feature-boxes">
+        <div class="feature-box">
+            <h3>AI Deepfake Detection</h3>
+            <p>Advanced AI models to detect product image manipulations.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Blockchain Hash Lock</h3>
+            <p>Immutable blockchain technology to lock product data.</p>
+        </div>
+        <div class="feature-box">
+            <h3>IPFS Storage</h3>
+            <p>Decentralized storage to secure product data.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form>
+        <div class="form-group">
+            <input type="text" placeholder="Your Name" required class="animated-input">
+        </div>
+        <div class="form-group">
+            <input type="email" placeholder="Your Email" required class="animated-input">
+        </div>
+        <div class="form-group">
+            <textarea placeholder="Your Message" required class="animated-input"></textarea>
+        </div>
+        <button class="btn send">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <h3>TruLink AI 🔥</h3>
+        <p>Your Fraud Proof Supply Chain Verification System</p>
+        <div class="social-links">
+            <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 TruLink AI | Developed by Bala 🚀
+    </div>
+</footer>
+
+<style>
+/* TruLink AI - Professional Modern Input Fields */
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.contact form input, .contact form textarea {
+    width: 400px;
+    padding: 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+    transition: all 0.3s ease-in-out;
+}
+
+.contact form input::placeholder, .contact form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.contact form input:focus, .contact form textarea:focus {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 1);
+    transform: scale(1.05);
+}
+
+.contact form textarea {
+    height: 150px;
+    resize: none;
+}
+
+.contact form .btn.send {
+    padding: 12px 25px;
+    background: linear-gradient(90deg, #00f0ff, #008cff);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.contact form .btn.send:hover {
+    background: linear-gradient(90deg, #008cff, #00f0ff);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+footer {
+    width: 100%;
+    background: #121212;
+    padding: 40px 0;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+    animation: pulse 3s infinite;
+}
+
+.footer-content h3 {
+    color: #00f0ff;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+</style>
+
+<script>
+    document.querySelector('.btn.explore').onclick = function () {
+        alert("Welcome to TruLink AI!");
+    };
+</script>
+</body>
+</html>

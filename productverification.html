@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruLink AI - Product Verification</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            color: #00f0ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #00f0ff;
+            }
+            to {
+                text-shadow: 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+            }
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+            background: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            animation: slideUp 1s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        th, td {
+            padding: 50px;
+            text-align: center;
+            border-bottom: 1px solid #00f0ff;
+        }
+        th {
+            background: #000;
+            color: #00f0ff;
+        }
+        tr:hover {
+            background: rgba(0, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .graph {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 15px;
+            margin: 20px;
+            background: #00f0ff;
+            color: #000;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #008cff;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #00f0ff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Product Verification Details 🔥</h1>
+</header>
+
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Seller Name</th>
+                <th>ProductId</th>
+                <th>Verified</th>
+                <th>Rating</th>
+                <th>Product Name</th>
+                <th>Authenticity Score</th>
+                <th>Damaged Reports</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tech World Pvt Ltd</td>
+                <td>@PFJN#</td>
+                <td>✅</td>
+                <td>4.8 ⭐</td>
+                <td>iPhone 15 Pro Max</td>
+                <td>98%</td>
+                <td>2%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="card">
+        <h2>Graph Analysis</h2>
+        <div class="graph">
+            <canvas id="authChart"></canvas>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Positive vs Negative Reviews</h2>
+        <div class="graph">
+            <canvas id="reviewChart"></canvas>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <button>✅ Verify Product</button>
+        <button>⚠️ Report Fake</button>
+    </div>
+</div>
+
+<script>
+    const ctx1 = document.getElementById('authChart').getContext('2d');
+    new Chart(ctx1, {
+        type: 'doughnut',
+        data: {
+            labels: ['Authentic', 'Fake'],
+            datasets: [{
+                label: 'Authenticity',
+                data: [98, 2],
+                backgroundColor: ['#00f0ff', '#ff0000']
+            }]
+        }
+    });
+
+    const ctx2 = document.getElementById('reviewChart').getContext('2d');
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['Positive', 'Negative'],
+            datasets: [{
+                label: 'Reviews',
+                data: [480, 20],
+                backgroundColor: ['#00f0ff', '#ff0000']
+            }]
+        }
+    });
+</script>
+
+</body>
+</html>

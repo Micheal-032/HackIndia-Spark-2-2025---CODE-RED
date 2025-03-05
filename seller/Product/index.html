@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TruLink AI - Seller Dashboard</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="logo" href="images.jpg">
+        <h1>TruLink AI</h1>
+      </div>
+      <ul class="nav-links">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="seller.html">Product Management</a></li>
+        <li><a href="order.html">Order Tracking</a></li>
+        
+        <li><a href="transaction.html">Transactions</a></li>
+        
+      </ul>
+      <div class="sidebar-footer">
+        <p>&copy; 2025 TruLink AI</p>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header>
+        <div class="header-left">
+          <button id="sidebarToggle">☰</button>
+          <h2>Seller Dashboard</h2>
+        </div>
+        <div class="header-right">
+          <div class="search-box">
+            <input type="text" placeholder="Search..." />
+            <button><i class="fas fa-search"></i></button>
+          </div>
+          <div class="notifications">
+            <i class="fas fa-bell"></i>
+            <span class="badge">3</span>
+            <div class="dropdown">
+              <ul>
+                <li>New order received!</li>
+                <li>Fraud alert on order #123</li>
+                <li>Stock running low for Product XYZ</li>
+              </ul>
+            </div>
+          </div>
+          <div class="user-profile">
+            <img src="profile.jpg" alt="User Profile" />
+          </div>
+        </div>
+      </header>
+
+      <!-- Overview Cards -->
+      <section class="overview">
+        <div class="card">
+          <h3>Total Orders</h3>
+          <p>1,234</p>
+        </div>
+        <div class="card">
+          <h3>Revenue</h3>
+          <p>$56,780</p>
+        </div>
+        <div class="card">
+          <h3>Fraud Alerts</h3>
+          <p>3</p>
+        </div>
+        <div class="card">
+          <h3>Blockchain Verified</h3>
+          <p>98%</p>
+        </div>
+      </section>
+
+      <!-- Charts Section -->
+      <section class="charts">
+        <div class="chart-container">
+          <h3>Sales Analytics</h3>
+          <canvas id="salesChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <h3>Revenue Trends</h3>
+          <canvas id="revenueChart"></canvas>
+        </div>
+      </section>
+
+      <footer>
+        <p>© 2025 TruLink AI. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal for Extra Details -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="modalClose" class="close">&times;</span>
+      
+    </div>
+  </div>
+
+  <!-- JS Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</ht

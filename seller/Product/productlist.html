@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruLink AI - Product List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #001f3f;
+            padding: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            background: #003366;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .sidebar a:hover {
+            background: #004080;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        nav {
+            background: #001f3f;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #003366;
+            color: white;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        input[type="search"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .delete-btn {
+            padding: 10px 20px;
+            background: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .delete-btn:hover {
+            background: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>TruLink AI</h2>
+        <a href="seller.html">Add Product</a>
+        <a href="updateproductlist.html">Update Product Details</a>
+        <a href="productdetails.html">Product Status</a>
+        <a href="index.html"><i>Analyze</i></a>
+    </div>
+    <div class="main-content">
+        <nav>
+            <div>TruLink AI - Product List</div>
+        </nav>
+        <div class="search-bar">
+            <input type="search" placeholder="Search Product" onkeyup="searchProduct()">
+            <button class="delete-btn" onclick="deleteSelectedProducts()">Delete Selected</button>
+        </div>
+        <table id="productTable">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Expiry Date</th>
+                    <th>Batch Number</th>
+                    <th>Manufacturer Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Products will be dynamically added here from localStorage -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        window.onload = function() {
+            loadProducts();
+        }
+
+        function loadProducts() {
+            let products = JSON.parse(localStorage.getItem("products")) || [];
+            let table = document.getElementById("productTable").getElementsByTagName('tbody')[0];
+            table.innerHTML = "";
+            products.forEach(product => {
+                let row = table.insertRow();
+                row.innerHTML = `<td><input type="checkbox" class="product-checkbox"></td>
+                                 <td>${product.pname}</td>
+                                 <td>${product.price}</td>
+                                 <td>${product.expiryDate}</td>
+                                 <td>${product.batchNumber}</td>
+                                 <td>${product.manufacturerName}</td>`;
+            });
+        }
+
+        function searchProduct() {
+            let input = document.querySelector(".search-bar input").value.toLowerCase();
+            let rows = document.querySelectorAll("#productTable tbody tr");
+            rows.forEach(row => {
+                row.style.display = row.innerText.toLowerCase().includes(input) ? "" : "none";
+            });
+        }
+
+        function deleteSelectedProducts() {
+            let checkboxes = document.querySelectorAll(".product-checkbox:checked");
+            let productIdsToDelete = [];
+            checkboxes.forEach(cb => {
+                let row = cb.parentElement.parentElement;
+                let productName = row.cells[1].textContent;
+                productIdsToDelete.push(productName);
+            });
+
+            let products = JSON.parse(localStorage.getItem("products")) || [];
+            let updatedProducts = products.filter(product => !productIdsToDelete.includes(product.pname));
+            localStorage.setItem("products", JSON.stringify(updatedProducts));
+
+            loadProducts();
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking - Seller</title>
+    <link rel="stylesheet" href="order.css">
+</head>
+
+<body>
+    <header>
+        <h1>Seller Order Tracking</h1>
+    </header>
+
+    <div class="order-tracking-container">
+        <input type="text" id="orderID" placeholder="Enter Order ID" />
+        <button onclick="trackOrder()">Track Order</button>
+
+        <div id="order-details" class="order-details">
+            <!-- Dynamic order details will appear here -->
+        </div>
+
+        <div id="order-list" class="order-list">
+            <!-- List of orders that seller can track will appear here -->
+        </div>
+    </div>
+
+    <footer>
+        <p>Powered by Your Brand</p>
+    </footer>
+
+    <script src="order.js"></script>
+</body>
+
+</html>

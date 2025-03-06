@@ -1,0 +1,235 @@
+/* General Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1f1f1f;
+    color: #fff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #00d4ff;
+}
+
+h1, h2 {
+    color: #00d4ff;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #2c2c2c;
+}
+
+header .logo img {
+    width: 150px;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li {
+    font-size: 16px;
+}
+
+header nav ul li a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #00d4ff;
+}
+
+header .user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Dashboard Section */
+#dashboard {
+    padding: 40px;
+    background-color: #242424;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+#dashboard h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#dashboard-stats {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+}
+
+.stat {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+}
+
+.stat h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.stat p {
+    font-size: 18px;
+}
+
+/* Fraud Detection Section */
+#fraud-detection {
+    padding: 40px;
+    background-color: #242424;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+#fraud-alerts p {
+    font-size: 18px;
+    color: #00ff00;
+}
+
+/* Transactions Section */
+#transactions {
+    padding: 40px;
+    background-color: #242424;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #444;
+}
+
+table th {
+    background-color: #333;
+}
+
+table tr:hover {
+    background-color: #444;
+    cursor: pointer;
+}
+
+/* AI Recommendations */
+#ai-recommendations {
+    padding: 40px;
+    background-color: #242424;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+#recommended-suppliers p {
+    font-size: 18px;
+}
+
+/* Search Bar */
+#search {
+    padding: 40px;
+    background-color: #242424;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+#search input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+    border-radius: 10px;
+}
+
+footer p {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+footer a {
+    font-size: 14px;
+    color: #00d4ff;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #fff;
+}
+
+.blockchain-button {
+    background-color: #00d4ff; /* Button background color */
+    color: #fff; /* Text color */
+    padding: 15px 30px; /* Padding for size */
+    font-size: 18px; /* Font size */
+    border: none; /* Remove border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.blockchain-button:hover {
+    background-color: #00a3cc; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+}
+.sidebar-button {
+    width: 100%;
+    background-color: #3498db; /* Button background color */
+    color: #fff; /* Text color */
+    border: none; /* Remove border */
+    padding: 15px 20px; /* Padding for size */
+    font-size: 18px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    text-align: left; /* Align text to the left */
+}
+
+.sidebar-button:hover {
+    background-color: #2980b9; /* Darker shade on hover */
+    transform: translateX(10px); /* Slight movement on hover */
+}
+
+.sidebar-links {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.sidebar-links li {
+    margin: 20px 0;
+}

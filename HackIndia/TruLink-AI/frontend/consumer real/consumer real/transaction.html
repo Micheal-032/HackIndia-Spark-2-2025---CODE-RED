@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Add your existing CSS here */
+
+        /* Blockchain Transactions Section */
+        #blockchain-transactions {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        #blockchain-transactions h2 {
+            font-size: 24px;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        .transaction-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .transaction-controls input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .transaction-controls select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .transaction-list {
+            overflow-x: auto;
+        }
+
+        .transaction-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .transaction-list th,
+        .transaction-list td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .transaction-list th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .transaction-list tr:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.3s ease;
+        }
+
+        .transaction-list .status {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .transaction-list .status.completed {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .transaction-list .status.pending {
+            background-color: #f1c40f;
+            color: white;
+        }
+
+        .transaction-list .status.failed {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            padding: 10px 15px;
+            margin: 0 5px;
+            border: 1px solid #3498db;
+            background-color: white;
+            color: #3498db;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .pagination button.active {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .pagination button:hover {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .transaction-list tr {
+            animation: fadeIn 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header and Sidebar (same as before) -->
+
+    <!-- Main Content -->
+    <div id="main-content" class="main-content">
+        <!-- Other sections (same as before) -->
+
+        <!-- Blockchain Transactions Section -->
+        <section id="blockchain-transactions">
+            <h2>Blockchain Transactions</h2>
+            <div class="transaction-controls">
+                <input type="text" id="search-transactions" placeholder="Search by ID, Sender, or Receiver">
+                <select id="filter-status">
+                    <option value="all">All Statuses</option>
+                    <option value="completed">Completed</option>
+                    <option value="pending">Pending</option>
+                    <option value="failed">Failed</option>
+                </select>
+            </div>
+            <div class="transaction-list">
+                <table id="transaction-table">
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Sender</th>
+                            <th>Receiver</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Transactions -->
+                        <tr>
+                            <td>#TX001</td>
+                            <td>Alice</td>
+                            <td>Bob</td>
+                            <td>$500</td>
+                            <td><span class="status completed">Completed</span></td>
+                            <td>01/03/2025</td>
+                        </tr>
+                        <tr>
+                            <td>#TX002</td>
+                            <td>Charlie</td>
+                            <td>Dave</td>
+                            <td>$300</td>
+                            <td><span class="status pending">Pending</span></td>
+                            <td>02/03/2025</td>
+                        </tr>
+                        <tr>
+                            <td>#TX003</td>
+                            <td>Eve</td>
+                            <td>Frank</td>
+                            <td>$200</td>
+                            <td><span class="status failed">Failed</span></td>
+                            <td>03/03/2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Search and Filter Functionality
+        const searchInput = document.getElementById('search-transactions');
+        const filterStatus = document.getElementById('filter-status');
+        const transactionTable = document.getElementById('transaction-table').getElementsByTagName('tbody')[0];
+
+        searchInput.addEventListener('input', filterTransactions);
+        filterStatus.addEventListener('change', filterTransactions);
+
+        function filterTransactions() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const statusFilter = filterStatus.value;
+
+            Array.from(transactionTable.rows).forEach(row => {
+                const transactionId = row.cells[0].textContent.toLowerCase();
+                const sender = row.cells[1].textContent.toLowerCase();
+                const receiver = row.cells[2].textContent.toLowerCase();
+                const status = row.cells[4].textContent.toLowerCase();
+
+                const matchesSearch = transactionId.includes(searchTerm) ||
+                    sender.includes(searchTerm) ||
+                    receiver.includes(searchTerm);
+
+                const matchesStatus = statusFilter === 'all' || status.includes(statusFilter);
+
+                row.style.display = matchesSearch && matchesStatus ? '' : 'none';
+            });
+        }
+
+        // Simulate Real-Time Updates
+        setInterval(() => {
+            const newRow = transactionTable.insertRow();
+            newRow.innerHTML = `
+                <td>#TX00${transactionTable.rows.length + 1}</td>
+                <td>New Sender</td>
+                <td>New Receiver</td>
+                <td>$${Math.floor(Math.random() * 1000)}</td>
+                <td><span class="status ${Math.random() > 0.5 ? 'completed' : 'pending'}">${Math.random() > 0.5 ? 'Completed' : 'Pending'}</span></td>
+                <td>${new Date().toLocaleDateString()}</td>
+            `;
+            newRow.style.animation = 'fadeIn 0.5s ease';
+        }, 5000); // Add a new transaction every 5 seconds
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        /* Add your existing CSS here */
+
+        /* AI Delivery Systems Section */
+        #ai-delivery {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        #ai-delivery h2 {
+            font-size: 24px;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        .delivery-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .delivery-controls input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .delivery-controls select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .delivery-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .delivery-card {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .delivery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .delivery-card .status {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .delivery-card .status.preparing {
+            background-color: #f1c40f;
+            color: white;
+        }
+
+        .delivery-card .status.in-transit {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .delivery-card .status.delivered {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .delivery-card .details {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .delivery-card .details h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #34495e;
+        }
+
+        .delivery-card .details p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .delivery-card .actions button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .delivery-card .actions button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Map Container */
+        #delivery-map {
+            height: 300px;
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delivery-card {
+            animation: fadeIn 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header and Sidebar (same as before) -->
+
+    <!-- Main Content -->
+    <div id="main-content" class="main-content">
+        <!-- Other sections (same as before) -->
+
+        <!-- AI Delivery Systems Section -->
+        <section id="ai-delivery">
+            <h2>AI Delivery Systems</h2>
+            <div class="delivery-controls">
+                <input type="text" id="search-deliveries" placeholder="Search by Order ID or Customer">
+                <select id="filter-status">
+                    <option value="all">All Statuses</option>
+                    <option value="preparing">Preparing</option>
+                    <option value="in-transit">In Transit</option>
+                    <option value="delivered">Delivered</option>
+                </select>
+            </div>
+            <div class="delivery-list" id="delivery-list">
+                <!-- Example Deliveries -->
+                <div class="delivery-card">
+                    <div class="details">
+                        <h3>Order #12345</h3>
+                        <p>Customer: John Doe</p>
+                        <p>Estimated Delivery: 01/04/2025</p>
+                    </div>
+                    <div class="status preparing">Preparing</div>
+                    <div class="actions">
+                        <button>Track</button>
+                    </div>
+                </div>
+                <div class="delivery-card">
+                    <div class="details">
+                        <h3>Order #12346</h3>
+                        <p>Customer: Jane Smith</p>
+                        <p>Estimated Delivery: 02/04/2025</p>
+                    </div>
+                    <div class="status in-transit">In Transit</div>
+                    <div class="actions">
+                        <button>Track</button>
+                    </div>
+                </div>
+                <div class="delivery-card">
+                    <div class="details">
+                        <h3>Order #12347</h3>
+                        <p>Customer: Alice Johnson</p>
+                        <p>Estimated Delivery: 03/04/2025</p>
+                    </div>
+                    <div class="status delivered">Delivered</div>
+                    <div class="actions">
+                        <button>Track</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delivery Map -->
+            <div id="delivery-map"></div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Search and Filter Functionality
+        const searchInput = document.getElementById('search-deliveries');
+        const filterStatus = document.getElementById('filter-status');
+        const deliveryList = document.getElementById('delivery-list');
+
+        searchInput.addEventListener('input', filterDeliveries);
+        filterStatus.addEventListener('change', filterDeliveries);
+
+        function filterDeliveries() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const statusFilter = filterStatus.value;
+
+            Array.from(deliveryList.children).forEach(card => {
+                const orderId = card.querySelector('.details h3').textContent.toLowerCase();
+                const customer = card.querySelector('.details p').textContent.toLowerCase();
+                const status = card.querySelector('.status').textContent.toLowerCase();
+
+                const matchesSearch = orderId.includes(searchTerm) || customer.includes(searchTerm);
+                const matchesStatus = statusFilter === 'all' || status.includes(statusFilter);
+
+                card.style.display = matchesSearch && matchesStatus ? '' : 'none';
+            });
+        }
+
+        // Initialize Delivery Map
+        const map = L.map('delivery-map').setView([51.505, -0.09], 13); // Default location
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add a marker for a delivery location
+        const marker = L.marker([51.5, -0.09]).addTo(map)
+            .bindPopup('Delivery Location')
+            .openPopup();
+
+        // Simulate Real-Time Updates
+        setInterval(() => {
+            const newCard = document.createElement('div');
+            newCard.className = 'delivery-card';
+            newCard.innerHTML = `
+                <div class="details">
+                    <h3>Order #${Math.floor(Math.random() * 10000)}</h3>
+                    <p>Customer: New Customer</p>
+                    <p>Estimated Delivery: ${new Date().toLocaleDateString()}</p>
+                </div>
+                <div class="status ${Math.random() > 0.5 ? 'in-transit' : 'preparing'}">${Math.random() > 0.5 ? 'In Transit' : 'Preparing'}</div>
+                <div class="actions">
+                    <button>Track</button>
+                </div>
+            `;
+            deliveryList.appendChild(newCard);
+        }, 5000); // Add a new delivery every 5 seconds
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruLink AI - Supply Chain Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Header with Navigation -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="TruLink AI Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#fraud-detection">Fraud Detection</a></li>
+                <li><a href="#transactions">Transactions</a></li>
+                <li><a href="#settings">Settings</a></li>
+                <li><a href="Blockchain.html" class="blockchain-button">BlockChain</a></li>
+            </ul>
+        </nav>
+        <div class="user-profile">
+            <img src="user-profile.png" alt="User Profile">
+        </div>
+    </header>
+
+    <!-- Real-Time Dashboard Overview -->
+    <section id="dashboard">
+        <h1>Real-Time Supply Chain Dashboard</h1>
+        <div id="dashboard-stats">
+            <div class="stat">
+                <h2>Order Status</h2>
+                <p id="order-status">Processing...</p>
+            </div>
+            <div class="stat">
+                <h2>Delivery Time</h2>
+                <p id="delivery-time">Estimated: 3 hours</p>
+            </div>
+            <div class="stat">
+                <h2>Fraud Risk</h2>
+                <p id="fraud-risk">Risk: 5%</p>
+            </div>
+        </div>
+        <div class="charts">
+            <!-- Dynamic Graph will be implemented later -->
+        </div>
+    </section>
+
+    <!-- Fraud Detection & Risk Analysis -->
+    <section id="fraud-detection">
+        <h2>Fraud Detection & Alerts</h2>
+        <div id="fraud-alerts">
+            <p>No fraud detected yet. All systems are secure.</p>
+        </div>
+    </section>
+
+    <!-- Blockchain Transaction Transparency -->
+    <section id="transactions">
+        <h2>Blockchain Transaction History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Timestamp</th>
+                    <th>Status</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onclick="showTransactionDetails('1234ABC')">
+                    <td>1234ABC</td>
+                    <td>2025-03-05 14:30</td>
+                    <td>Verified</td>
+                    <td>₹5000</td>
+                </tr>
+                <tr onclick="showTransactionDetails('5678XYZ')">
+                    <td>5678XYZ</td>
+                    <td>2025-03-05 15:00</td>
+                    <td>Pending</td>
+                    <td>₹3000</td>
+                </tr>
+                <!-- More rows can be added dynamically -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- AI-Driven Personalization -->
+    <section id="ai-recommendations">
+        <h2>AI-Powered Recommendations</h2>
+        <div id="recommended-suppliers">
+            <p>Suggested Supplier: XYZ Electronics</p>
+        </div>
+    </section>
+
+    <!-- AI-Powered Search Bar -->
+    <section id="search">
+        <h2>AI-Enhanced Search</h2>
+        <input type="text" placeholder="Search for products, suppliers, transactions...">
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 TruLink AI Supply Chain Platform. All rights reserved.</p>
+        <a href="#privacy-policy">Privacy Policy</a> | <a href="#terms-conditions">Terms & Conditions</a>
+    </footer>
+
+</body>
+</html>

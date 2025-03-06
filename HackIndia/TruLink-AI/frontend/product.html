@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruLink AI - Product</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">TruLink AI 🚀</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#smart-contract">Smart Contract</a></li>
+        <li><a href="#upload">Upload Product</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to TruLink AI Product Gateway</h1>
+        <p>Blockchain Secured Product Authentication</p>
+        <button class="btn" onclick="window.location.href='index.html'">Back to Home</button>
+    </div>
+</section>
+
+<section class="about" id="smart-contract">
+    <h2>Smart Contract Verification</h2>
+    <p>All product data is verified through Blockchain TruLink AI Smart Contracts.</p>
+    <div class="feature-boxes">
+        <div class="feature-box">
+            <h3>100% Fraud Proof</h3>
+        </div>
+        <div class="feature-box">
+            <h3>AI Scanning Technology</h3>
+        </div>
+        <div class="feature-box">
+            <h3>Blockchain Integrity</h3>
+        </div>
+    </div>
+</section>
+
+<section class="features" id="upload">
+    <h2>Upload Your Product</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+        <div class="form-group">
+            <input type="text" placeholder="Product Name" required class="animated-input">
+        </div>
+        <div class="form-group">
+            <input type="file" name="product-file" required class="animated-input">
+        </div>
+        <button type="submit" class="btn upload">Upload & Verify</button>
+    </form>
+</section>
+
+<section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <form id="contact-form">
+        <div class="form-group">
+            <input type="text" placeholder="Your Name" required class="animated-input">
+        </div>
+        <div class="form-group">
+            <input type="email" placeholder="Your Email" required class="animated-input">
+        </div>
+        <div class="form-group">
+            <textarea placeholder="Message" required class="animated-input"></textarea>
+        </div>
+        <button type="submit" class="btn send">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    TruLink AI © 2025 | India's First AI + Web3 Supply Chain Intelligence System
+</footer>
+
+<style>
+/* Professional Input Fields */
+.animated-input {
+    width: 400px;
+    padding: 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+.animated-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    text-align: center;
+}
+
+.animated-input:focus {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 1);
+    transform: scale(1.05);
+}
+
+.btn.upload {
+    padding: 12px 25px;
+    background: linear-gradient(90deg, #00f0ff, #008cff);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn.upload:hover {
+    background: linear-gradient(90deg, #008cff, #00f0ff);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.btn.upload:active {
+    transform: scale(0.98);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+}
+</style>
+</body>
+</html>

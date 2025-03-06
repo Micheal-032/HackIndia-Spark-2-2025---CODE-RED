@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Page</title>
+    <link rel="stylesheet" href="transaction.css">
+</head>
+
+<body>
+    <header>
+        <h1>Transaction Dashboard</h1>
+    </header>
+
+    <div class="transaction-container">
+        <div class="filter-options">
+            <label for="transactionFilter">Filter by Status:</label>
+            <select id="transactionFilter" onchange="filterTransactions()">
+                <option value="all">All Transactions</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+                <option value="failed">Failed</option>
+            </select>
+        </div>
+
+        <div class="transaction-id-section">
+            <input type="text" id="transactionID" placeholder="Enter Transaction ID" />
+            <button onclick="trackTransaction()">Track Transaction</button>
+        </div>
+
+        <div id="transaction-details" class="transaction-details">
+            <!-- Dynamic transaction details will appear here -->
+        </div>
+
+        <div id="transaction-list" class="transaction-list">
+            <!-- Transaction list will appear here -->
+        </div>
+    </div>
+
+    <footer>
+        <p>Powered by Your Brand</p>
+    </footer>
+
+    <script src="transaction.js"></script>
+</body>
+
+</html>

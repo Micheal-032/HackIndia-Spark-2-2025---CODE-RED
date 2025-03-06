@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruLink AI - Signup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script> <!-- XLSX Library -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0d0d0d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 500px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ccff;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 204, 255, 0.8);
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+            overflow: auto;
+            max-height: 90vh;
+        }
+
+        h2 {
+            color: #00ccff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .input-box {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            outline: none;
+            background: transparent;
+            border-bottom: 2px solid #00ccff;
+            color: #fff;
+            transition: 0.3s ease;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .photo-label {
+            display: block;
+            color: #00ccff;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        button {
+            margin-top: 20px;
+            background: linear-gradient(135deg, #00ccff, #00ff99);
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(0, 255, 153, 0.8);
+            transition: 0.4s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(0, 255, 153, 1);
+        }
+
+        .checker {
+            display: none;
+            margin: 20px 0;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .checker span {
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+
+        .checker.green {
+            background: #00ff99;
+        }
+
+        .checker.red {
+            background: #ff0033;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
+            }
+            to {
+                text-shadow: 0 0 20px #00ff99, 0 0 30px #00ff99;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>TruLink AI Signup</h2>
+    <button onclick="selectType('seller')">Seller</button>
+    <button onclick="selectType('consumer')">Consumer</button>
+    <div id="signupForm" style="display:none;">
+        <div class="input-box">
+            <input type="text" id="username" placeholder="User Name">
+        </div>
+        <div class="input-box">
+            <input type="date" id="dob" placeholder="Date of Birth">
+        </div>
+        <div class="input-box">
+            <input type="text" id="phone" placeholder="Phone Number">
+        </div>
+        <label class="photo-label">Upload Your Photo Here</label>
+        <div class="input-box">
+            <input type="file" id="photo">
+        </div>
+        <div class="input-box">
+            <input type="text" id="company" placeholder="Company Name">
+        </div>
+        <div class="input-box">
+            <input type="text" id="cin" placeholder="Company CIN Number">
+        </div>
+        <div class="input-box">
+            <input type="text" id="aadhar" placeholder="Aadhar Card Number">
+        </div>
+        <button onclick="verifyChecker()">Verify Checker</button>
+        <div class="checker" id="checker"></div>
+    </div>
+</div>
+
+<script>
+    let userType = "";
+    let generatedId = null;
+
+    function selectType(type) {
+        userType = type;
+        document.getElementById("signupForm").style.display = "block";
+        document.querySelector("h2").innerText = `TruLink AI ${type.charAt(0).toUpperCase() + type.slice(1)} Signup`;
+    }
+
+    function calculateFraudPercentage(username, dob, phone, aadhar) {
+        let score = 100;
+
+        // Name check (more than 3 characters)
+        if (username.length <= 3) {
+            score -= 20;
+        }
+
+        // Phone number check (10 digits)
+        if (phone.length !== 10) {
+            score -= 20;
+        }
+
+        // Aadhar number check (12 digits)
+        if (aadhar.length !== 12) {
+            score -= 20;
+        }
+
+        // Age check (must be 18 or older)
+        const today = new Date();
+        const birthDate = new Date(dob);
+        const age = today.getFullYear() - birthDate.getFullYear();
+        if (age < 18) {
+            score -= 20;
+        }
+
+        return score;
+    }
+
+    async function verifyChecker() {
+        const username = document.getElementById("username").value;
+        const aadhar = document.getElementById("aadhar").value;
+        const cin = document.getElementById("cin").value;
+        const phone = document.getElementById("phone").value;
+        const dob = document.getElementById("dob").value;
+        const company = document.getElementById("company").value;
+        const photo = document.getElementById("photo").files[0];
+        const checker = document.getElementById("checker");
+
+        if (username && aadhar && photo) {
+            let fraudScore = calculateFraudPercentage(username, dob, phone, aadhar);
+            checker.style.display = "block";
+            if (fraudScore > 80) {
+                generatedId = Math.floor(10000000 + Math.random() * 90000000); // Generate unique ID
+                checker.innerHTML = `✔ Kindly Note Your ID Number: ${generatedId}<br>`;
+                checker.className = "checker green";
+                checker.innerHTML += `Verification Score: ${fraudScore}%`;
+                checker.innerHTML += "<br><input type='password' id='password' placeholder='Create Password'><br>";
+                checker.innerHTML += "<input type='password' id='confirmPassword' placeholder='Confirm Password'><br>";
+                checker.innerHTML += "<button onclick='createPassword()'>Create</button>";
+            } else {
+                checker.innerHTML = `✖ Verification Failed Score: ${fraudScore}%`;
+                checker.className = "checker red";
+            }
+        } else {
+            alert("Please fill all the fields correctly.");
+        }
+    }
+
+    function createPassword() {
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+        if (password === confirmPassword) {
+            alert("Successfully Account Created!");
+            saveToExcel(password);  // Save to Excel file after successful creation
+            setTimeout(function() {
+                window.location.href = 'login.html';
+            }, 2000); // Redirect to login.html after 2 seconds
+        } else {
+            alert("Passwords do not match.");
+        }
+    }
+
+    function saveToExcel(password) {
+        const username = document.getElementById("username").value;
+        const dob = document.getElementById("dob").value;
+        const phone = document.getElementById("phone").value;
+        const company = document.getElementById("company").value;
+        const cin = document.getElementById("cin").value;
+        const aadhar = document.getElementById("aadhar").value;
+
+        const wb = XLSX.utils.book_new();
+        const ws_data = [
+            ["S.No.", "Username", "Date of Birth", "Phone", "Company Name", "Company CIN", "Aadhar Card Number", "id", "Password"],
+        ];
+
+        const existingData = localStorage.getItem(`${userType}Data`) ? JSON.parse(localStorage.getItem(`${userType}Data`)) : [];
+        
+        const newSNo = existingData.length > 0 ? existingData[existingData.length - 1].sno + 1 : 1;
+
+        const newEntry = [
+            newSNo, username, dob, phone, company, cin, aadhar, generatedId, password
+        ];
+        existingData.push({ sno: newSNo, username, dob, phone, company, cin, aadhar, id: generatedId, password });
+
+        localStorage.setItem(`${userType}Data`, JSON.stringify(existingData));
+
+        const rowData = existingData.map(item => [item.sno, item.username, item.dob, item.phone, item.company, item.cin, item.aadhar, item.id, item.password]);
+        ws_data.push(...rowData);
+
+        const ws = XLSX.utils.aoa_to_sheet(ws_data);
+        XLSX.utils.book_append_sheet(wb, ws, `${userType.charAt(0).toUpperCase() + userType.slice(1)} Data`);
+
+        XLSX.writeFile(wb, `TruLinkAI_${userType.charAt(0).toUpperCase() + userType.slice(1)}_Data.xlsx`);
+    }
+</script>
+</body>
+</html>
